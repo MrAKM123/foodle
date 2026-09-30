@@ -1,12 +1,14 @@
 import React from 'react';
-import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.js';
+import { useCart } from '../context/CartContext.js';
 import { DemoSwitcher } from '../components/common/DemoSwitcher.js';
+import { ReplaceCartModal } from '../components/cart/ReplaceCartModal.js';
+import { FloatingCartBar } from '../components/cart/FloatingCartBar.js';
 import {
   Search,
   ShoppingBag,
   MapPin,
-  User,
   Heart,
   Clock,
   LogOut,
@@ -16,12 +18,13 @@ import {
 
 export const CustomerLayout: React.FC = () => {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { itemCount } = useCart();
   const location = useLocation();
 
   return (
     <div className="min-h-screen flex flex-col bg-cream-100 font-sans">
       <DemoSwitcher />
+      <ReplaceCartModal />
 
       {/* Main Header */}
       <header className="sticky top-[33px] z-40 bg-white/95 backdrop-blur-md border-b border-cream-200 shadow-sm transition-all">
@@ -49,7 +52,7 @@ export const CustomerLayout: React.FC = () => {
               <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search for biryani, butter chicken, pizza..."
+                placeholder="Search for biryani, butter chicken, dosa..."
                 className="w-full pl-10 pr-4 py-2 text-xs md:text-sm bg-cream-50 border border-cream-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all placeholder:text-gray-400"
               />
             </div>
@@ -59,7 +62,9 @@ export const CustomerLayout: React.FC = () => {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               to="/app/orders"
-              className="flex items-center gap-1.5 text-xs font-semibold text-charcoal-800 hover:text-brand-500 transition-colors p-2"
+              className={`flex items-center gap-1.5 text-xs font-semibold transition-colors p-2 ${
+                location.pathname === '/app/orders' ? 'text-brand-500' : 'text-charcoal-800 hover:text-brand-500'
+              }`}
             >
               <Clock className="w-4 h-4" />
               <span className="hidden lg:inline">Orders</span>
@@ -67,7 +72,9 @@ export const CustomerLayout: React.FC = () => {
 
             <Link
               to="/app/favorites"
-              className="flex items-center gap-1.5 text-xs font-semibold text-charcoal-800 hover:text-brand-500 transition-colors p-2"
+              className={`flex items-center gap-1.5 text-xs font-semibold transition-colors p-2 ${
+                location.pathname === '/app/favorites' ? 'text-brand-500' : 'text-charcoal-800 hover:text-brand-500'
+              }`}
             >
               <Heart className="w-4 h-4" />
               <span className="hidden lg:inline">Favorites</span>
@@ -76,12 +83,20 @@ export const CustomerLayout: React.FC = () => {
             {/* Cart Button */}
             <Link
               to="/app/cart"
-              className="relative flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white px-3.5 py-2 rounded-full font-bold text-xs shadow-warm hover:shadow-warm-hover transition-all"
+              className={`relative flex items-center gap-2 px-3.5 py-2 rounded-full font-bold text-xs shadow-warm transition-all ${
+                itemCount > 0
+                  ? 'bg-brand-500 hover:bg-brand-600 text-white'
+                  : 'bg-cream-200 hover:bg-cream-300 text-charcoal-800'
+              }`}
             >
               <ShoppingBag className="w-4 h-4" />
               <span className="hidden sm:inline">Cart</span>
-              <span className="bg-white text-brand-500 text-[11px] font-black rounded-full px-1.5 py-0.2">
-                0
+              <span
+                className={`text-[11px] font-black rounded-full px-1.5 py-0.2 ${
+                  itemCount > 0 ? 'bg-white text-brand-500' : 'bg-charcoal-800 text-white'
+                }`}
+              >
+                {itemCount}
               </span>
             </Link>
 
@@ -116,7 +131,10 @@ export const CustomerLayout: React.FC = () => {
         <Outlet />
       </main>
 
-      {/* Human-designed Warm Footer */}
+      {/* Floating cart bar */}
+      <FloatingCartBar />
+
+      {/* Footer */}
       <footer className="bg-white border-t border-cream-300 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -135,7 +153,7 @@ export const CustomerLayout: React.FC = () => {
               <ul className="space-y-2 text-xs text-charcoal-800/70">
                 <li><Link to="/app" className="hover:text-brand-500">Explore Restaurants</Link></li>
                 <li><Link to="/app/orders" className="hover:text-brand-500">Order History</Link></li>
-                <li><Link to="/app/offers" className="hover:text-brand-500">Deals & Coupons</Link></li>
+                <li><Link to="/app/favorites" className="hover:text-brand-500">Favorite Kitchens</Link></li>
               </ul>
             </div>
 

@@ -5,6 +5,9 @@ import { RegisterPage } from './pages/auth/RegisterPage.js';
 import { VerifyOtpPage } from './pages/auth/VerifyOtpPage.js';
 import { CustomerLayout } from './layouts/CustomerLayout.js';
 import { CustomerHome } from './pages/customer/CustomerHome.js';
+import { RestaurantPage } from './pages/customer/RestaurantPage.js';
+import { CartPage } from './pages/customer/CartPage.js';
+import { FavoritesPage } from './pages/customer/FavoritesPage.js';
 import { RestaurantLayout } from './layouts/RestaurantLayout.js';
 import { RestaurantDashboard } from './pages/restaurant/RestaurantDashboard.js';
 import { RiderLayout } from './layouts/RiderLayout.js';
@@ -25,10 +28,10 @@ export const App: React.FC = () => {
       {/* 1. Customer Section (/app) */}
       <Route path="/app" element={<CustomerLayout />}>
         <Route index element={<CustomerHome />} />
-        <Route path="restaurant/:slug" element={<CustomerHome />} />
-        <Route path="cart" element={<CustomerHome />} />
+        <Route path="restaurant/:slug" element={<RestaurantPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
         <Route path="orders" element={<CustomerHome />} />
-        <Route path="favorites" element={<CustomerHome />} />
       </Route>
 
       {/* 2. Restaurant Partner Portal (/restaurant) */}
