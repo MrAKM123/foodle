@@ -1,0 +1,35 @@
+{
+  "name": "foodle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-grade multi-role food delivery platform (Swiggy/Zomato style)",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "start": "npm --prefix server start",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server test",
+    "lint": "npm --prefix server run lint && npm --prefix client run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "food-delivery",
+    "react",
+    "express",
+    "prisma",
+    "socket.io",
+    "tailwindcss",
+    "swiggy-clone",
+    "zomato-clone"
+  ],
+  "author": "Foodle Team",
+  "license": "MIT"
+}

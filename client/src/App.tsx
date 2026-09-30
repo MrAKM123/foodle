@@ -1,0 +1,94 @@
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { LoginPage } from './pages/auth/LoginPage.js';
+import { RegisterPage } from './pages/auth/RegisterPage.js';
+import { VerifyOtpPage } from './pages/auth/VerifyOtpPage.js';
+import { CustomerLayout } from './layouts/CustomerLayout.js';
+import { CustomerHome } from './pages/customer/CustomerHome.js';
+import { RestaurantLayout } from './layouts/RestaurantLayout.js';
+import { RestaurantDashboard } from './pages/restaurant/RestaurantDashboard.js';
+import { RiderLayout } from './layouts/RiderLayout.js';
+import { RiderDashboard } from './pages/rider/RiderDashboard.js';
+import { AdminLayout } from './layouts/AdminLayout.js';
+import { AdminDashboard } from './pages/admin/AdminDashboard.js';
+import { ProtectedRoute } from './components/common/ProtectedRoute.js';
+import { NotFoundPage } from './pages/NotFoundPage.js';
+
+export const App: React.FC = () => {
+  return (
+    <Routes>
+      {/* Public Auth Routes */}
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/verify-otp" element={<VerifyOtpPage />} />
+
+      {/* 1. Customer Section (/app) */}
+      <Route path="/app" element={<CustomerLayout />}>
+        <Route index element={<CustomerHome />} />
+        <Route path="restaurant/:slug" element={<CustomerHome />} />
+        <Route path="cart" element={<CustomerHome />} />
+        <Route path="orders" element={<CustomerHome />} />
+        <Route path="favorites" element={<CustomerHome />} />
+      </Route>
+
+      {/* 2. Restaurant Partner Portal (/restaurant) */}
+      <Route
+        path="/restaurant"
+        element={
+          <ProtectedRoute allowedRoles={['RESTAURANT', 'ADMIN']}>
+            <RestaurantLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<RestaurantDashboard />} />
+        <Route path="menu" element={<RestaurantDashboard />} />
+        <Route path="earnings" element={<RestaurantDashboard />} />
+        <Route path="reviews" element={<RestaurantDashboard />} />
+        <Route path="settings" element={<RestaurantDashboard />} />
+      </Route>
+
+      {/* 3. Rider Hero App (/rider) */}
+      <Route
+        path="/rider"
+        element={
+          <ProtectedRoute allowedRoles={['RIDER', 'ADMIN']}>
+            <RiderLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<RiderDashboard />} />
+        <Route path="wallet" element={<RiderDashboard />} />
+        <Route path="history" element={<RiderDashboard />} />
+        <Route path="profile" element={<RiderDashboard />} />
+      </Route>
+
+      {/* 4. Super Admin Command Center (/admin) */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute allowedRoles={['ADMIN']}>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AdminDashboard />} />
+        <Route path="restaurants" element={<AdminDashboard />} />
+        <Route path="riders" element={<AdminDashboard />} />
+        <Route path="orders" element={<AdminDashboard />} />
+        <Route path="commissions" element={<AdminDashboard />} />
+        <Route path="coupons" element={<AdminDashboard />} />
+        <Route path="users" element={<AdminDashboard />} />
+        <Route path="support" element={<AdminDashboard />} />
+        <Route path="audit" element={<AdminDashboard />} />
+      </Route>
+
+      {/* Root redirect to Customer App */}
+      <Route path="/" element={<Navigate to="/app" replace />} />
+
+      {/* 404 Catch-all */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
+};
+
+export default App;
