@@ -25,6 +25,11 @@ import { RiderHistoryPage } from './pages/rider/RiderHistoryPage.js';
 import { RiderProfilePage } from './pages/rider/RiderProfilePage.js';
 import { AdminLayout } from './layouts/AdminLayout.js';
 import { AdminDashboard } from './pages/admin/AdminDashboard.js';
+import { AdminRestaurantsPage } from './pages/admin/AdminRestaurantsPage.js';
+import { AdminRidersPage } from './pages/admin/AdminRidersPage.js';
+import { AdminOrdersPage } from './pages/admin/AdminOrdersPage.js';
+import { AdminCouponsPage } from './pages/admin/AdminCouponsPage.js';
+import { AdminSettlementsPage } from './pages/admin/AdminSettlementsPage.js';
 import { ProtectedRoute } from './components/common/ProtectedRoute.js';
 import { NotFoundPage } from './pages/NotFoundPage.js';
 
@@ -117,11 +122,11 @@ export const App: React.FC = () => {
         }
       >
         <Route index element={<AdminDashboard />} />
-        <Route path="restaurants" element={<AdminDashboard />} />
-        <Route path="riders" element={<AdminDashboard />} />
-        <Route path="orders" element={<AdminDashboard />} />
-        <Route path="commissions" element={<AdminDashboard />} />
-        <Route path="coupons" element={<AdminDashboard />} />
+        <Route path="restaurants" element={<AdminRestaurantsPage />} />
+        <Route path="riders" element={<AdminRidersPage />} />
+        <Route path="orders" element={<AdminOrdersPage />} />
+        <Route path="commissions" element={<AdminSettlementsPage />} />
+        <Route path="coupons" element={<AdminCouponsPage />} />
         <Route path="users" element={<AdminDashboard />} />
         <Route path="support" element={<AdminDashboard />} />
         <Route path="audit" element={<AdminDashboard />} />
