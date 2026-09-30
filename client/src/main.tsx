@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext.js';
 import { CartProvider } from './context/CartContext.js';
+import { ServerHealthBanner } from './components/common/ServerHealthBanner.js';
 import App from './App.js';
 import './index.css';
 
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
+          <ServerHealthBanner />
           <Toaster
             position="top-right"
             toastOptions={{

@@ -1,0 +1,51 @@
+name: Foodle CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test-server:
+    name: Backend Lint & Unit/Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Server Dependencies
+        run: npm --prefix server ci
+
+      - name: Generate Prisma Client
+        run: npm --prefix server run prisma:generate
+
+      - name: Run Backend Vitest Test Suite
+        run: npm --prefix server test
+
+  build-client:
+    name: Frontend TypeScript & Vite Production Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Client Dependencies
+        run: npm --prefix client ci
+
+      - name: Typecheck & Build Client
+        run: npm --prefix client run build
