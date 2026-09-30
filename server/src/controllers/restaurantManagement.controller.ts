@@ -46,7 +46,7 @@ export class RestaurantManagementController {
     try {
       const userId = req.user!.id;
       const restaurant = await RestaurantManagementService.getRestaurantForUser(userId);
-      const { id } = req.params;
+      const id = req.params.id as string;
       const { status, prepTimeMinutes, rejectionReason } = req.body;
 
       const updated = await RestaurantManagementService.updateOrderStatus(
@@ -104,7 +104,7 @@ export class RestaurantManagementController {
     try {
       const userId = req.user!.id;
       const restaurant = await RestaurantManagementService.getRestaurantForUser(userId);
-      const { id } = req.params;
+      const id = req.params.id as string;
       const updated = await RestaurantManagementService.updateMenuItem(
         restaurant.id,
         id,
@@ -120,7 +120,7 @@ export class RestaurantManagementController {
     try {
       const userId = req.user!.id;
       const restaurant = await RestaurantManagementService.getRestaurantForUser(userId);
-      const { id } = req.params;
+      const id = req.params.id as string;
       await RestaurantManagementService.deleteMenuItem(restaurant.id, id);
       sendSuccess(res, null, 'Dish removed from menu');
     } catch (error: any) {

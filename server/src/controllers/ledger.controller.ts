@@ -9,7 +9,7 @@ export class LedgerController {
    */
   static async getRestaurantLedger(req: Request, res: Response): Promise<void> {
     try {
-      const { restaurantId } = req.params;
+      const restaurantId = req.params.restaurantId as string;
       const user = req.user!;
 
       // If user is RESTAURANT role, ensure they own this restaurant
@@ -35,7 +35,7 @@ export class LedgerController {
    */
   static async getRiderLedger(req: Request, res: Response): Promise<void> {
     try {
-      const { riderId } = req.params;
+      const riderId = req.params.riderId as string;
       const user = req.user!;
 
       // If user is RIDER role, ensure they own this profile

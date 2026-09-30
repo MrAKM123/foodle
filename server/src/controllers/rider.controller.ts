@@ -62,7 +62,7 @@ export class RiderController {
     try {
       const userId = req.user!.id;
       const riderId = await RiderController.getRiderProfileId(userId);
-      const { id } = req.params;
+      const id = req.params.id as string;
       const order = await RiderService.acceptOffer(riderId, id);
       sendSuccess(res, order, 'Delivery offer accepted! Proceed to kitchen.');
     } catch (error: any) {
@@ -74,7 +74,7 @@ export class RiderController {
     try {
       const userId = req.user!.id;
       const riderId = await RiderController.getRiderProfileId(userId);
-      const { id } = req.params;
+      const id = req.params.id as string;
       const result = await RiderService.rejectOffer(riderId, id);
       sendSuccess(res, result, 'Offer declined');
     } catch (error: any) {

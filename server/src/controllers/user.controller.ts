@@ -99,7 +99,7 @@ export class UserController {
   static async deleteAddress(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user!.id;
-      const { id } = req.params;
+      const id = req.params.id as string;
 
       const address = await prisma.address.findFirst({
         where: { id, userId },

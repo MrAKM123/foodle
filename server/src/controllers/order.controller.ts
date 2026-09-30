@@ -47,7 +47,7 @@ export class OrderController {
    */
   static async getOrderDetails(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const userId = req.user!.id;
       const userRole = req.user!.role;
 
@@ -63,7 +63,7 @@ export class OrderController {
    */
   static async downloadInvoice(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const userId = req.user!.id;
       const userRole = req.user!.role;
 
@@ -95,13 +95,13 @@ export class OrderController {
             name: order.restaurant.name,
             address: order.restaurant.address,
             phone: order.restaurant.phone,
-            fssaiLicense: order.restaurant.fssaiLicense,
+            fssaiLicense: undefined,
           },
           address: {
             label: order.address.label,
             street: order.address.street,
             city: order.address.city,
-            pincode: order.address.pincode,
+            pincode: order.address.postalCode,
           },
           items: order.items.map((it: any) => ({
             name: it.menuItem?.name || 'Item',

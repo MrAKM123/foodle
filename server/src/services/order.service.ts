@@ -129,8 +129,8 @@ export class OrderService {
         name: dbItem.name,
         price: unitPrice,
         quantity: item.quantity,
-        selectedVariants: item.selectedVariants ? JSON.stringify(item.selectedVariants) : null,
-        selectedAddons: item.selectedAddons ? JSON.stringify(item.selectedAddons) : null,
+        selectedVariants: item.selectedVariants ? JSON.stringify(item.selectedVariants) : undefined,
+        selectedAddons: item.selectedAddons ? JSON.stringify(item.selectedAddons) : undefined,
         itemTotal,
       });
     }
@@ -429,6 +429,9 @@ export class OrderService {
     const order = await prisma.order.findUnique({
       where: { id: orderId },
       include: {
+        customer: {
+          select: { id: true, name: true, email: true, phone: true },
+        },
         items: {
           include: { menuItem: true },
         },

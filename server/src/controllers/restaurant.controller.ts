@@ -20,7 +20,7 @@ export class RestaurantController {
    */
   static async getRestaurantDetails(req: Request, res: Response): Promise<void> {
     try {
-      const { slug } = req.params;
+      const slug = req.params.slug as string;
       const restaurant = await RestaurantService.getRestaurantBySlug(slug);
       sendSuccess(res, restaurant, 'Restaurant details fetched');
     } catch (error: any) {
@@ -46,7 +46,7 @@ export class RestaurantController {
   static async toggleFavorite(req: Request, res: Response): Promise<void> {
     try {
       const userId = req.user!.id;
-      const { id } = req.params;
+      const id = req.params.id as string;
       const result = await RestaurantService.toggleFavorite(userId, id);
       sendSuccess(
         res,

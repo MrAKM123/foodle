@@ -186,7 +186,8 @@ export class AuthController {
    */
   static async demoLogin(req: Request, res: Response): Promise<void> {
     try {
-      const role = (req.params.role || 'customer').toUpperCase();
+      const roleParam = (req.params.role as string) || 'customer';
+      const role = roleParam.toUpperCase();
       const validRoles = ['CUSTOMER', 'RESTAURANT', 'RIDER', 'ADMIN'];
 
       if (!validRoles.includes(role)) {

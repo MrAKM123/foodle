@@ -114,7 +114,7 @@ export class AdminController {
    */
   static async verifyRestaurant(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const { isApproved, commissionRate } = req.body;
 
       const updated = await prisma.restaurant.update({
@@ -166,7 +166,7 @@ export class AdminController {
    */
   static async verifyRider(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const { documentsVerified } = req.body;
 
       const updated = await prisma.riderProfile.update({
@@ -220,7 +220,7 @@ export class AdminController {
    */
   static async forceCancelOrder(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const { reason } = req.body;
 
       const order = await prisma.order.findUnique({
@@ -309,7 +309,7 @@ export class AdminController {
 
   static async toggleCoupon(req: Request, res: Response): Promise<void> {
     try {
-      const { id } = req.params;
+      const id = req.params.id as string;
       const existing = await prisma.coupon.findUnique({ where: { id } });
       if (!existing) {
         sendError(res, 'Coupon not found', 404);
