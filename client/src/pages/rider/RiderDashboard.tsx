@@ -51,7 +51,16 @@ export const RiderDashboard: React.FC = () => {
         setActiveTrip(null);
       }
       if (offersRes.data.success) {
-        setPendingOffers(offersRes.data.data);
+        const incomingOffers = offersRes.data.data || [];
+        setPendingOffers((prev) => {
+          if (incomingOffers.length > prev.length && incomingOffers.length > 0) {
+            toast.success(`⚡ New Delivery Offer: ₹${incomingOffers[0].estimatedEarning?.toFixed(0)} Earning!`, {
+              duration: 5000,
+              icon: '🛵',
+            });
+          }
+          return incomingOffers;
+        });
       }
     } catch {
       // silent
@@ -62,7 +71,7 @@ export const RiderDashboard: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-    const interval = setInterval(fetchData, 5000); // Poll offers/trip every 5s
+    const interval = setInterval(fetchData, 3000); // Poll offers/trip every 3s
     return () => clearInterval(interval);
   }, []);
 

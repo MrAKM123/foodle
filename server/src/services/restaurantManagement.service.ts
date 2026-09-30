@@ -1,6 +1,7 @@
 import { prisma } from '../config/db.js';
 import { isValidStatusTransition } from '../utils/stateMachine.js';
 import { io } from '../server.js';
+import { RiderService } from './rider.service.js';
 
 export class RestaurantManagementService {
   /**
@@ -152,6 +153,13 @@ export class RestaurantManagementService {
       });
     } catch {
       // silent
+    }
+
+    // Automatically trigger rider dispatch when order is ready for pickup or preparing
+    if (newStatus === 'READY_FOR_PICKUP' || newStatus === 'PREPARING') {
+      RiderService.findAndDispatchNearestRider(order.id).catch((err) => {
+        console.error('Error auto-dispatching rider for order:', order.id, err);
+      });
     }
 
     return updated;
