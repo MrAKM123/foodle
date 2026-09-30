@@ -11,6 +11,7 @@ import { CheckoutPage } from './pages/customer/CheckoutPage.js';
 import { OrderSuccessPage } from './pages/customer/OrderSuccessPage.js';
 import { OrdersHistoryPage } from './pages/customer/OrdersHistoryPage.js';
 import { FavoritesPage } from './pages/customer/FavoritesPage.js';
+import { LiveOrderTrackingPage } from './pages/customer/LiveOrderTrackingPage.js';
 import { RestaurantLayout } from './layouts/RestaurantLayout.js';
 import { RestaurantDashboard } from './pages/restaurant/RestaurantDashboard.js';
 import { RestaurantMenuPage } from './pages/restaurant/RestaurantMenuPage.js';
@@ -19,6 +20,9 @@ import { RestaurantReviewsPage } from './pages/restaurant/RestaurantReviewsPage.
 import { RestaurantSettingsPage } from './pages/restaurant/RestaurantSettingsPage.js';
 import { RiderLayout } from './layouts/RiderLayout.js';
 import { RiderDashboard } from './pages/rider/RiderDashboard.js';
+import { RiderWalletPage } from './pages/rider/RiderWalletPage.js';
+import { RiderHistoryPage } from './pages/rider/RiderHistoryPage.js';
+import { RiderProfilePage } from './pages/rider/RiderProfilePage.js';
 import { AdminLayout } from './layouts/AdminLayout.js';
 import { AdminDashboard } from './pages/admin/AdminDashboard.js';
 import { ProtectedRoute } from './components/common/ProtectedRoute.js';
@@ -50,6 +54,14 @@ export const App: React.FC = () => {
           element={
             <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN']}>
               <OrderSuccessPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="orders/:orderId/track"
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN']}>
+              <LiveOrderTrackingPage />
             </ProtectedRoute>
           }
         />
@@ -90,9 +102,9 @@ export const App: React.FC = () => {
         }
       >
         <Route index element={<RiderDashboard />} />
-        <Route path="wallet" element={<RiderDashboard />} />
-        <Route path="history" element={<RiderDashboard />} />
-        <Route path="profile" element={<RiderDashboard />} />
+        <Route path="wallet" element={<RiderWalletPage />} />
+        <Route path="history" element={<RiderHistoryPage />} />
+        <Route path="profile" element={<RiderProfilePage />} />
       </Route>
 
       {/* 4. Super Admin Command Center (/admin) */}
