@@ -254,7 +254,7 @@ export const RestaurantPage: React.FC = () => {
 
       {/* Sticky Category Quick Jump Bar */}
       {restaurant.categories && restaurant.categories.length > 0 && (
-        <div className="sticky top-[97px] z-30 bg-white/95 backdrop-blur-md py-2.5 px-4 rounded-2xl border border-cream-200 shadow-sm overflow-x-auto">
+        <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md py-2.5 px-4 rounded-2xl border border-cream-200 shadow-sm overflow-x-auto">
           <div className="flex items-center gap-2">
             {restaurant.categories.map((cat) => (
               <a

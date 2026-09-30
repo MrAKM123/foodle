@@ -30,7 +30,7 @@ export const RiderLayout: React.FC = () => {
       <DemoSwitcher />
 
       {/* Top Rider Header */}
-      <header className="sticky top-[33px] z-40 bg-slate-900 text-white shadow-md">
+      <header className="sticky top-0 z-40 bg-slate-900 text-white shadow-md">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 font-bold">

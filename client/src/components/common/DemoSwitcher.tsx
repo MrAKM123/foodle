@@ -21,7 +21,7 @@ export const DemoSwitcher: React.FC = () => {
   };
 
   return (
-    <div className="bg-charcoal-900 text-white border-b border-charcoal-800 text-xs py-1.5 px-4 shadow-sm select-none z-50 sticky top-0">
+    <div className="bg-charcoal-900 text-white border-b border-charcoal-800 text-xs py-1.5 px-4 shadow-sm select-none relative z-30">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-1 font-semibold text-saffron-500 tracking-wide uppercase text-[11px]">

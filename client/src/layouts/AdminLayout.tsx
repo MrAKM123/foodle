@@ -35,9 +35,9 @@ export const AdminLayout: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100 font-sans">
       <DemoSwitcher />
 
-      <div className="flex-1 flex flex-col md:flex-row">
+      <div className="flex-1 flex flex-col md:flex-row min-h-0">
         {/* Sidebar */}
-        <aside className="w-full md:w-64 bg-slate-950 border-r border-slate-800 flex flex-col">
+        <aside className="w-full md:w-64 bg-slate-950 border-r border-slate-800 flex flex-col shrink-0">
           <div className="p-5 border-b border-slate-800">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded bg-indigo-600 flex items-center justify-center text-white font-black shadow-md">
@@ -50,7 +50,7 @@ export const AdminLayout: React.FC = () => {
             </div>
           </div>
 
-          <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+          <nav className="flex-1 p-3 space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path;
@@ -85,7 +85,7 @@ export const AdminLayout: React.FC = () => {
         </aside>
 
         {/* Admin Main Canvas */}
-        <main className="flex-1 bg-slate-900 p-6 overflow-y-auto">
+        <main className="flex-1 bg-slate-900 p-4 sm:p-6 min-w-0">
           <Outlet />
         </main>
       </div>
