@@ -13,6 +13,10 @@ import { OrdersHistoryPage } from './pages/customer/OrdersHistoryPage.js';
 import { FavoritesPage } from './pages/customer/FavoritesPage.js';
 import { RestaurantLayout } from './layouts/RestaurantLayout.js';
 import { RestaurantDashboard } from './pages/restaurant/RestaurantDashboard.js';
+import { RestaurantMenuPage } from './pages/restaurant/RestaurantMenuPage.js';
+import { RestaurantEarningsPage } from './pages/restaurant/RestaurantEarningsPage.js';
+import { RestaurantReviewsPage } from './pages/restaurant/RestaurantReviewsPage.js';
+import { RestaurantSettingsPage } from './pages/restaurant/RestaurantSettingsPage.js';
 import { RiderLayout } from './layouts/RiderLayout.js';
 import { RiderDashboard } from './pages/rider/RiderDashboard.js';
 import { AdminLayout } from './layouts/AdminLayout.js';
@@ -70,10 +74,10 @@ export const App: React.FC = () => {
         }
       >
         <Route index element={<RestaurantDashboard />} />
-        <Route path="menu" element={<RestaurantDashboard />} />
-        <Route path="earnings" element={<RestaurantDashboard />} />
-        <Route path="reviews" element={<RestaurantDashboard />} />
-        <Route path="settings" element={<RestaurantDashboard />} />
+        <Route path="menu" element={<RestaurantMenuPage />} />
+        <Route path="earnings" element={<RestaurantEarningsPage />} />
+        <Route path="reviews" element={<RestaurantReviewsPage />} />
+        <Route path="settings" element={<RestaurantSettingsPage />} />
       </Route>
 
       {/* 3. Rider Hero App (/rider) */}

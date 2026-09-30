@@ -3,6 +3,7 @@ import authRoutes from './auth.routes.js';
 import userRoutes from './user.routes.js';
 import restaurantRoutes from './restaurant.routes.js';
 import orderRoutes from './order.routes.js';
+import restaurantManagementRoutes from './restaurantManagement.routes.js';
 
 const apiRouter = Router();
 
@@ -22,5 +23,6 @@ apiRouter.use('/auth', authRoutes);
 apiRouter.use('/users', userRoutes);
 apiRouter.use('/restaurants', restaurantRoutes);
 apiRouter.use('/orders', orderRoutes);
+apiRouter.use('/restaurant', restaurantManagementRoutes);
 
 export default apiRouter;
