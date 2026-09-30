@@ -2,6 +2,7 @@ import { Router } from 'express';
 import authRoutes from './auth.routes.js';
 import userRoutes from './user.routes.js';
 import restaurantRoutes from './restaurant.routes.js';
+import orderRoutes from './order.routes.js';
 
 const apiRouter = Router();
 
@@ -20,5 +21,6 @@ apiRouter.get('/health', (req, res) => {
 apiRouter.use('/auth', authRoutes);
 apiRouter.use('/users', userRoutes);
 apiRouter.use('/restaurants', restaurantRoutes);
+apiRouter.use('/orders', orderRoutes);
 
 export default apiRouter;

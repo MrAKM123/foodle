@@ -12,7 +12,7 @@ import { errorHandler, notFoundHandler } from './middleware/error.middleware.js'
 import { globalLimiter } from './middleware/rateLimiter.middleware.js';
 
 const app = express();
-const httpServer = http.createServer(app);
+export const httpServer = http.createServer(app);
 
 // Socket.IO configuration with CORS
 export const io = new SocketIOServer(httpServer, {
@@ -53,21 +53,13 @@ app.use('/api', apiRouter);
 
 // Socket.io Connection Handler
 io.on('connection', (socket) => {
-  console.log(`🔌 Socket connected: ${socket.id}`);
-
   // Room joining by role & user ID
   socket.on('join_room', (roomId: string) => {
     socket.join(roomId);
-    console.log(`📡 Socket ${socket.id} joined room ${roomId}`);
   });
 
   socket.on('leave_room', (roomId: string) => {
     socket.leave(roomId);
-    console.log(`👋 Socket ${socket.id} left room ${roomId}`);
-  });
-
-  socket.on('disconnect', () => {
-    console.log(`❌ Socket disconnected: ${socket.id}`);
   });
 });
 
@@ -75,12 +67,12 @@ io.on('connection', (socket) => {
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-// Start Server
+// Start Server (only when not in test environment)
 const PORT = ENV.PORT;
 
-async function startServer() {
+export async function startServer() {
   await connectDB();
-  httpServer.listen(PORT, () => {
+  return httpServer.listen(PORT, () => {
     console.log(`
 🚀 ====================================================
 🍛 Foodle API Server running in ${ENV.NODE_ENV} mode!
@@ -92,4 +84,6 @@ async function startServer() {
   });
 }
 
-startServer();
+if (process.env.NODE_ENV !== 'test' && !process.env.VITEST) {
+  startServer();
+}

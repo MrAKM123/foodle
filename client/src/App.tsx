@@ -7,6 +7,9 @@ import { CustomerLayout } from './layouts/CustomerLayout.js';
 import { CustomerHome } from './pages/customer/CustomerHome.js';
 import { RestaurantPage } from './pages/customer/RestaurantPage.js';
 import { CartPage } from './pages/customer/CartPage.js';
+import { CheckoutPage } from './pages/customer/CheckoutPage.js';
+import { OrderSuccessPage } from './pages/customer/OrderSuccessPage.js';
+import { OrdersHistoryPage } from './pages/customer/OrdersHistoryPage.js';
 import { FavoritesPage } from './pages/customer/FavoritesPage.js';
 import { RestaurantLayout } from './layouts/RestaurantLayout.js';
 import { RestaurantDashboard } from './pages/restaurant/RestaurantDashboard.js';
@@ -30,8 +33,31 @@ export const App: React.FC = () => {
         <Route index element={<CustomerHome />} />
         <Route path="restaurant/:slug" element={<RestaurantPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route
+          path="checkout"
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN']}>
+              <CheckoutPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="order-success/:orderId"
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN']}>
+              <OrderSuccessPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="orders"
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN']}>
+              <OrdersHistoryPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="orders" element={<CustomerHome />} />
       </Route>
 
       {/* 2. Restaurant Partner Portal (/restaurant) */}
