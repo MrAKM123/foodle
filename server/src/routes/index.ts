@@ -5,6 +5,7 @@ import restaurantRoutes from './restaurant.routes.js';
 import orderRoutes from './order.routes.js';
 import restaurantManagementRoutes from './restaurantManagement.routes.js';
 import riderRoutes from './rider.routes.js';
+import ledgerRoutes from './ledger.routes.js';
 
 const apiRouter = Router();
 
@@ -26,5 +27,6 @@ apiRouter.use('/restaurants', restaurantRoutes);
 apiRouter.use('/orders', orderRoutes);
 apiRouter.use('/restaurant', restaurantManagementRoutes);
 apiRouter.use('/rider', riderRoutes);
+apiRouter.use('/ledger', ledgerRoutes);
 
 export default apiRouter;

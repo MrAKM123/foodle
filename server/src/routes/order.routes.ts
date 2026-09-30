@@ -21,6 +21,7 @@ router.post(
 
 // Order histories and detail
 router.get('/my-orders', OrderController.getMyOrders);
+router.get('/:id/invoice', OrderController.downloadInvoice);
 router.get('/:id', OrderController.getOrderDetails);
 
 export default router;

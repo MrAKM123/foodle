@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { OrderService } from '../services/order.service.js';
 import { sendSuccess, sendError } from '../utils/response.js';
+import { generatePdfInvoice } from '../utils/pdfInvoice.js';
 
 export class OrderController {
   /**
@@ -54,6 +55,68 @@ export class OrderController {
       sendSuccess(res, order, 'Order details fetched');
     } catch (error: any) {
       sendError(res, error.message || 'Order not found', 404);
+    }
+  }
+
+  /**
+   * Download or stream PDF tax invoice
+   */
+  static async downloadInvoice(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const userId = req.user!.id;
+      const userRole = req.user!.role;
+
+      const order = await OrderService.getOrderById(id, userId, userRole);
+      if (!order) {
+        sendError(res, 'Order not found', 404);
+        return;
+      }
+
+      generatePdfInvoice(
+        {
+          orderNumber: order.orderNumber,
+          createdAt: order.createdAt,
+          paymentMethod: order.paymentMethod,
+          paymentStatus: order.paymentStatus,
+          razorpayPaymentId: order.razorpayPaymentId,
+          subtotal: order.subtotal,
+          taxAmount: order.tax,
+          deliveryFee: order.deliveryFee,
+          platformFee: order.platformFee,
+          discountAmount: order.discount,
+          totalAmount: order.totalAmount,
+          customer: {
+            name: order.customer.name,
+            email: order.customer.email,
+            phone: order.customer.phone,
+          },
+          restaurant: {
+            name: order.restaurant.name,
+            address: order.restaurant.address,
+            phone: order.restaurant.phone,
+            fssaiLicense: order.restaurant.fssaiLicense,
+          },
+          address: {
+            label: order.address.label,
+            street: order.address.street,
+            city: order.address.city,
+            pincode: order.address.pincode,
+          },
+          items: order.items.map((it: any) => ({
+            name: it.menuItem?.name || 'Item',
+            quantity: it.quantity,
+            price: it.price,
+            totalPrice: it.totalPrice,
+            isVeg: it.menuItem?.isVeg ?? true,
+            variantName: it.variantName,
+            addons: it.addons,
+          })),
+        },
+        res
+      );
+    } catch (error: any) {
+      sendError(res, error.message || 'Failed to generate invoice', 500);
     }
   }
 }

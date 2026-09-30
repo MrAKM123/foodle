@@ -12,6 +12,8 @@ import {
   KeyRound,
   CheckCircle2,
   FileText,
+  Receipt,
+  Navigation,
 } from 'lucide-react';
 
 export const OrdersHistoryPage: React.FC = () => {
@@ -194,10 +196,29 @@ export const OrdersHistoryPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  {order.status !== 'DELIVERED' && order.status !== 'CANCELLED' && order.status !== 'REJECTED' && (
+                    <Link
+                      to={`/app/orders/${order.id}/track`}
+                      className="px-3 py-1.5 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-lg transition-colors flex items-center gap-1.5 shadow-sm text-xs"
+                    >
+                      <Navigation className="w-3.5 h-3.5" />
+                      Track Live
+                    </Link>
+                  )}
+
+                  <button
+                    onClick={() => window.open(`/api/orders/${order.id}/invoice`, '_blank')}
+                    className="px-3 py-1.5 bg-white hover:bg-cream-50 border border-charcoal-200 text-charcoal-800 font-bold rounded-lg transition-colors flex items-center gap-1.5 text-xs shadow-xs"
+                    title="Download Tax Invoice (PDF)"
+                  >
+                    <Receipt className="w-3.5 h-3.5 text-brand-500" />
+                    Invoice PDF
+                  </button>
+
                   <Link
                     to={`/app/restaurant/${order.restaurant?.slug}`}
-                    className="px-3.5 py-1.5 bg-cream-100 hover:bg-cream-200 text-charcoal-800 font-bold rounded-lg transition-colors"
+                    className="px-3 py-1.5 bg-cream-100 hover:bg-cream-200 text-charcoal-800 font-bold rounded-lg transition-colors text-xs"
                   >
                     Reorder Dishes
                   </Link>

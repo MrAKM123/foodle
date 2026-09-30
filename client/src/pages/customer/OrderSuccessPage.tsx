@@ -110,19 +110,29 @@ export const OrderSuccessPage: React.FC = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-cream-200">
-          <Link
-            to="/app/orders"
-            className="w-full sm:w-1/2 py-3 bg-cream-100 hover:bg-cream-200 text-charcoal-800 font-bold text-xs rounded-xl transition-colors text-center"
-          >
-            View Order History
-          </Link>
+        <div className="space-y-2 pt-4 border-t border-cream-200">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <Link
+              to="/app/orders"
+              className="w-full sm:w-1/2 py-3 bg-cream-100 hover:bg-cream-200 text-charcoal-800 font-bold text-xs rounded-xl transition-colors text-center"
+            >
+              View Order History
+            </Link>
+            <button
+              onClick={() => navigate(`/app/orders/${order?.id || orderId}/track`)}
+              className="w-full sm:w-1/2 py-3 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-xs rounded-xl shadow-warm hover:shadow-warm-hover transition-all flex items-center justify-center gap-1.5"
+            >
+              <span>Live Order Tracker</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
           <button
-            onClick={() => navigate('/app/orders')}
-            className="w-full sm:w-1/2 py-3 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-xs rounded-xl shadow-warm hover:shadow-warm-hover transition-all flex items-center justify-center gap-1.5"
+            onClick={() => window.open(`/api/orders/${order?.id || orderId}/invoice`, '_blank')}
+            className="w-full py-2.5 bg-white hover:bg-cream-50 border border-charcoal-200 text-charcoal-800 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm"
           >
-            <span>Track Order Status</span>
-            <ArrowRight className="w-4 h-4" />
+            <Receipt className="w-4 h-4 text-brand-500" />
+            <span>Download Tax Invoice (PDF)</span>
           </button>
         </div>
       </div>
