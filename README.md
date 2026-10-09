@@ -1,14 +1,20 @@
 # 🍛 Foodle — Production Multi-Role Food Delivery Platform
 
-[![Foodle CI](https://github.com/foodle-app/foodle/actions/workflows/ci.yml/badge.svg)](https://github.com/foodle-app/foodle/actions)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-foodle--xi--lime.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://foodle-xi-lime.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-MrAKM123%2Ffoodle-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MrAKM123/foodle)
+
+[![Foodle CI](https://github.com/MrAKM123/foodle/actions/workflows/ci.yml/badge.svg)](https://github.com/MrAKM123/foodle/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![React 18](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20-green.svg)](https://nodejs.org/)
 [![Prisma ORM](https://img.shields.io/badge/Prisma-5.22-2D3748.svg)](https://www.prisma.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon.tech-336791.svg)](https://neon.tech/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Foodle** is a full-stack, real-time food ordering and delivery ecosystem (inspired by Swiggy/Zomato), engineered with TypeScript, React, Node.js, Express, PostgreSQL, Prisma ORM, Socket.io, Leaflet OSM, and Razorpay Test Mode. Built strictly for free-tier cloud deployment (Vercel + Render + Neon).
+> 🌐 **Live Web Application**: **[https://foodle-xi-lime.vercel.app](https://foodle-xi-lime.vercel.app)**
+> 
+> **Foodle** is a full-stack, real-time multi-role food ordering and delivery platform (inspired by Swiggy/Zomato), engineered with TypeScript, React, Node.js, Express, PostgreSQL (Neon), Prisma ORM, Socket.io, Leaflet OSM, and Razorpay Test Mode. Deployed 100% on free-tier cloud infrastructure (Vercel + Render + Neon).
 
 ---
 
