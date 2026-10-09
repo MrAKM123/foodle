@@ -14,6 +14,9 @@ import {
   LogOut,
   ChevronDown,
   Sparkles,
+  Github,
+  Linkedin,
+  Mail,
 } from 'lucide-react';
 
 export const CustomerLayout: React.FC = () => {
@@ -177,11 +180,45 @@ export const CustomerLayout: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-            <p>© {new Date().getFullYear()} Foodle Technologies. Built for food lovers.</p>
-            <p className="flex items-center gap-1 font-medium">
-              Made with 🌶️ & ❤️ for authentic dining experiences
+          <div className="mt-8 pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between text-xs text-charcoal-700 gap-4">
+            <p className="text-center sm:text-left">
+              © {new Date().getFullYear()} <span className="font-bold text-brand-600">Foodle</span>. All rights reserved. Designed & Engineered by{' '}
+              <span className="font-bold text-charcoal-950">Akash Kumar Maurya</span>.
             </p>
+
+            {/* Social Media Links */}
+            <div className="flex items-center gap-5 text-charcoal-800">
+              <a
+                href="mailto:contact@foodle.app"
+                className="hover:text-brand-600 flex items-center gap-1.5 transition-colors font-medium"
+                title="Send Email"
+              >
+                <Mail className="w-4 h-4 text-brand-500" />
+                <span>Email</span>
+              </a>
+
+              <a
+                href="https://github.com/MrAKM123"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-600 flex items-center gap-1.5 transition-colors font-medium"
+                title="GitHub Profile"
+              >
+                <Github className="w-4 h-4 text-brand-500" />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/akash-kumar-maurya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-600 flex items-center gap-1.5 transition-colors font-medium"
+                title="LinkedIn Profile"
+              >
+                <Linkedin className="w-4 h-4 text-brand-500" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
