@@ -95,14 +95,13 @@ export class RestaurantManagementService {
       status: newStatus,
     };
 
-    if (newStatus === 'RESTAURANT_ACCEPTED') {
-      updateData.acceptedAt = new Date();
+    if (newStatus === 'RESTAURANT_ACCEPTED' || newStatus === 'PREPARING') {
+      if (!order.acceptedAt) updateData.acceptedAt = new Date();
+      if (newStatus === 'PREPARING') updateData.preparedAt = new Date();
       if (prepTimeMinutes) {
         updateData.prepTimeMinutes = prepTimeMinutes;
         updateData.estimatedDeliveryTime = new Date(Date.now() + (prepTimeMinutes + 20) * 60 * 1000);
       }
-    } else if (newStatus === 'PREPARING') {
-      updateData.preparedAt = new Date();
     } else if (newStatus === 'REJECTED' || newStatus === 'CANCELLED') {
       updateData.cancelledAt = new Date();
       updateData.cancellationReason = rejectionReason || 'Rejected by restaurant';

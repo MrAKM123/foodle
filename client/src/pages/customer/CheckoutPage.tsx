@@ -32,7 +32,7 @@ export const CheckoutPage: React.FC = () => {
 
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [selectedAddressId, setSelectedAddressId] = useState<string>('');
-  const [paymentMethod, setPaymentMethod] = useState<'RAZORPAY' | 'COD'>('RAZORPAY');
+  const [paymentMethod, setPaymentMethod] = useState<'RAZORPAY' | 'COD'>('COD');
   const [loading, setLoading] = useState<boolean>(false);
 
   // New Address Modal State

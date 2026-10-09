@@ -84,7 +84,12 @@ export const RestaurantDashboard: React.FC = () => {
 
       const res = await apiClient.put(`/restaurant/orders/${orderId}/status`, payload);
       if (res.data.success) {
-        toast.success(`Order moved to ${newStatus}`);
+        toast.success(`Order status: ${newStatus.replace(/_/g, ' ')}`);
+        if (newStatus === 'PREPARING') {
+          setActiveTab('PREPARING');
+        } else if (newStatus === 'READY_FOR_PICKUP') {
+          setActiveTab('READY');
+        }
         fetchOrders();
       }
     } catch (err: any) {
@@ -313,7 +318,7 @@ export const RestaurantDashboard: React.FC = () => {
                   </span>
                 </div>
 
-                {/* Stage 1: Incoming Orders (Accept or Reject) */}
+                {/* Stage 1: Incoming Orders (Accept & Start Cooking or Reject) */}
                 {(order.status === 'PLACED' || order.status === 'PAYMENT_CONFIRMED') && (
                   <div className="flex items-center gap-2">
                     <button
@@ -323,40 +328,30 @@ export const RestaurantDashboard: React.FC = () => {
                       Reject
                     </button>
                     <button
-                      onClick={() => handleUpdateStatus(order.id, 'RESTAURANT_ACCEPTED', selectedPrepTime)}
+                      onClick={() => handleUpdateStatus(order.id, 'PREPARING', selectedPrepTime)}
                       className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
                     >
-                      <span>Accept ({selectedPrepTime}m)</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ChefHat className="w-3.5 h-3.5" />
+                      <span>Accept & Start Cooking ({selectedPrepTime}m)</span>
                     </button>
                   </div>
                 )}
 
-                {/* Stage 2: Accepted / In Kitchen Prep */}
-                {order.status === 'RESTAURANT_ACCEPTED' && (
-                  <button
-                    onClick={() => handleUpdateStatus(order.id, 'PREPARING')}
-                    className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
-                  >
-                    <ChefHat className="w-4 h-4" />
-                    <span>Start Cooking</span>
-                  </button>
-                )}
-
-                {order.status === 'PREPARING' && (
+                {/* Stage 2: Accepted / In Kitchen Prep -> Food Ready & Dispatch */}
+                {(order.status === 'RESTAURANT_ACCEPTED' || order.status === 'PREPARING') && (
                   <button
                     onClick={() => handleUpdateStatus(order.id, 'READY_FOR_PICKUP')}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
+                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
                   >
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>Ready for Pickup</span>
+                    <span>Food Ready & Dispatch</span>
                   </button>
                 )}
 
-                {/* Stage 3: Ready for pickup or on the way */}
+                {/* Stage 3: Ready for pickup / Dispatched */}
                 {order.status === 'READY_FOR_PICKUP' && (
                   <span className="text-xs text-purple-700 font-bold bg-purple-50 px-3 py-1.5 rounded-xl border border-purple-200 flex items-center gap-1">
-                    <Timer className="w-3.5 h-3.5 animate-spin" /> Awaiting Rider Dispatch
+                    <Timer className="w-3.5 h-3.5 animate-spin" /> Dispatched • Awaiting Rider
                   </span>
                 )}
               </div>
