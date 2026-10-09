@@ -132,8 +132,8 @@ export const App: React.FC = () => {
         <Route path="audit" element={<AdminDashboard />} />
       </Route>
 
-      {/* Root redirect to Customer App */}
-      <Route path="/" element={<Navigate to="/app" replace />} />
+      {/* Root redirect to Login Page */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
       {/* 404 Catch-all */}
       <Route path="*" element={<NotFoundPage />} />
