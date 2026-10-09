@@ -209,7 +209,7 @@ export const CustomerLayout: React.FC = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/akash-kumar-maurya"
+                href="https://www.linkedin.com/in/akash-maurya-ba13362a7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-brand-600 flex items-center gap-1.5 transition-colors font-medium"
