@@ -25,6 +25,15 @@ Try any role immediately using the **Floating Demo Switcher** pinned to the bott
 
 ---
 
+## 📸 Screenshots Showcase
+
+| Customer App & Live Tracking | Kitchen Partner & Rider Portal |
+| :---: | :---: |
+| <img src="screenshots/01_customer_home.png" alt="Customer Discovery" width="450" /> | <img src="screenshots/04_kitchen_dashboard.png" alt="Kitchen Queue" width="450" /> |
+| <img src="screenshots/03_live_tracking.png" alt="Live GPS Tracking" width="450" /> | <img src="screenshots/05_rider_app.png" alt="Rider Hero App" width="450" /> |
+
+---
+
 ## 🏗️ System Architecture
 
 ```mermaid
