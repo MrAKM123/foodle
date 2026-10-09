@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import authRoutes from './auth.routes.js';
 import userRoutes from './user.routes.js';
 import restaurantRoutes from './restaurant.routes.js';
@@ -11,7 +11,7 @@ import adminRoutes from './admin.routes.js';
 const apiRouter = Router();
 
 // Health check endpoint
-apiRouter.get('/health', (req, res) => {
+apiRouter.get('/health', (req: Request, res: Response) => {
   res.status(200).json({
     status: 'healthy',
     service: 'Foodle API Server',
