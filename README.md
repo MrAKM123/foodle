@@ -289,6 +289,12 @@ Open [http://localhost:5173](http://localhost:5173) in your browser!
    - `VITE_API_URL`: `https://your-foodle-server.onrender.com/api`
    - `VITE_RAZORPAY_KEY_ID`: `your_razorpay_key_id`
 
+## 👨‍💻 Author
+
+**Akash Maurya**
+- **GitHub**: [@MrAKM123](https://github.com/MrAKM123)
+- **Live Project**: [https://foodle-xi-lime.vercel.app](https://foodle-xi-lime.vercel.app)
+
 ---
 
 ## 📜 License
