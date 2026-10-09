@@ -189,7 +189,7 @@ export const CustomerLayout: React.FC = () => {
             {/* Social Media Links */}
             <div className="flex items-center gap-5 text-charcoal-800">
               <a
-                href="mailto:contact@foodle.app"
+                href="mailto:akashmaurya2905@gmail.com"
                 className="hover:text-brand-600 flex items-center gap-1.5 transition-colors font-medium"
                 title="Send Email"
               >

@@ -291,8 +291,10 @@ Open [http://localhost:5173](http://localhost:5173) in your browser!
 
 ## 👨‍💻 Author
 
-**Akash Maurya**
+**Akash Kumar Maurya**
+- **Email**: [akashmaurya2905@gmail.com](mailto:akashmaurya2905@gmail.com)
 - **GitHub**: [@MrAKM123](https://github.com/MrAKM123)
+- **LinkedIn**: [Akash Kumar Maurya](https://www.linkedin.com/in/akash-kumar-maurya)
 - **Live Project**: [https://foodle-xi-lime.vercel.app](https://foodle-xi-lime.vercel.app)
 
 ---
