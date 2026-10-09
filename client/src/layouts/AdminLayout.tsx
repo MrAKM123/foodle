@@ -50,7 +50,7 @@ export const AdminLayout: React.FC = () => {
             </div>
           </div>
 
-          <nav className="flex-1 p-3 space-y-1">
+          <nav className="flex md:flex-col overflow-x-auto md:overflow-x-visible p-2 md:p-3 gap-1.5 md:space-y-1 no-scrollbar">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = location.pathname === link.path;
@@ -58,18 +58,18 @@ export const AdminLayout: React.FC = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`flex items-center justify-between px-3 py-2 md:py-2.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                     isActive
                       ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/30'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     <Icon className="w-4 h-4" />
                     <span>{link.label}</span>
                   </div>
                   {link.badge && (
-                    <span className="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-500/30">
+                    <span className="hidden md:inline bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-500/30">
                       {link.badge}
                     </span>
                   )}
@@ -78,7 +78,7 @@ export const AdminLayout: React.FC = () => {
             })}
           </nav>
 
-          <div className="p-4 border-t border-slate-800 text-[11px] text-slate-500">
+          <div className="hidden md:block p-4 border-t border-slate-800 text-[11px] text-slate-500">
             Logged in as <span className="text-slate-300 font-medium">{user?.email}</span>
             <div className="mt-1 text-emerald-400 font-mono">Status: Connected (SSL/TLS)</div>
           </div>

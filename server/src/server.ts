@@ -17,7 +17,7 @@ export const httpServer = http.createServer(app);
 // Socket.IO configuration with CORS
 export const io = new SocketIOServer(httpServer, {
   cors: {
-    origin: [ENV.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: [ENV.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174'],
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -32,7 +32,7 @@ app.use(
 
 app.use(
   cors({
-    origin: [ENV.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: [ENV.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'http://127.0.0.1:5174'],
     credentials: true,
   })
 );

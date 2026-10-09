@@ -154,7 +154,7 @@ export const CustomerHome: React.FC = () => {
         <h2 className="text-lg font-bold text-charcoal-900 font-display mb-4">
           What are you craving today?
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div className="flex sm:grid sm:grid-cols-4 lg:grid-cols-7 gap-3 overflow-x-auto sm:overflow-x-visible pb-2 sm:pb-0 no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat.name}
@@ -167,7 +167,7 @@ export const CustomerHome: React.FC = () => {
                   setVegOnly(false);
                 }
               }}
-              className={`flex flex-col items-center gap-2 p-3.5 rounded-2xl border transition-all text-center group ${
+              className={`flex flex-col items-center gap-2 p-3.5 rounded-2xl border transition-all text-center group shrink-0 sm:shrink min-w-[105px] sm:min-w-0 ${
                 (cat.tag === 'VEG' && vegOnly) || selectedCuisine === cat.tag
                   ? 'bg-brand-500 text-white border-brand-500 shadow-warm'
                   : 'bg-white hover:bg-cream-50 border-cream-200 text-charcoal-800'

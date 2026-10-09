@@ -30,7 +30,7 @@ export const DemoSwitcher: React.FC = () => {
           <span className="hidden md:inline text-charcoal-400">1-click login for testing all 4 roles:</span>
         </div>
 
-        <div className="flex items-center flex-wrap gap-1.5">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 max-w-full">
           <button
             onClick={() => handleSwitch('CUSTOMER')}
             disabled={isLoading}
