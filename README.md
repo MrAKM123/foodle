@@ -27,10 +27,17 @@ Try any role immediately using the **Floating Demo Switcher** pinned to the bott
 
 ## 📸 Screenshots Showcase
 
-| Customer App & Live Tracking | Kitchen Partner & Rider Portal |
-| :---: | :---: |
-| <img src="screenshots/01_customer_home.png" alt="Customer Discovery" width="450" /> | <img src="screenshots/04_kitchen_dashboard.png" alt="Kitchen Queue" width="450" /> |
-| <img src="screenshots/03_live_tracking.png" alt="Live GPS Tracking" width="450" /> | <img src="screenshots/05_rider_app.png" alt="Rider Hero App" width="450" /> |
+| 🍛 Customer Discovery & Dishes | 🛒 Cart, Coupons & Checkout | 🛵 Live GPS Tracking & OTP |
+| :---: | :---: | :---: |
+| <img src="screenshots/01_customer_home.png" alt="Customer Discovery" width="300" /> | <img src="screenshots/02_restaurant_menu.png" alt="Restaurant Menu" width="300" /> | <img src="screenshots/04_live_tracking_otp.png" alt="Live Order Tracking" width="300" /> |
+
+| 👨‍🍳 Kitchen Partner Live Queue | 📋 Menu & Catalog Editor | 💳 Rider Hero App & Wallet |
+| :---: | :---: | :---: |
+| <img src="screenshots/05_kitchen_dashboard.png" alt="Kitchen Queue" width="300" /> | <img src="screenshots/06_kitchen_menu_manager.png" alt="Menu Catalog Editor" width="300" /> | <img src="screenshots/07_rider_hero_app.png" alt="Rider App" width="300" /> |
+
+| 💰 Rider Earnings Wallet | ⚡ Super Admin Command Center | 🛍️ Customizable Dishes |
+| :---: | :---: | :---: |
+| <img src="screenshots/08_rider_wallet.png" alt="Rider Wallet" width="300" /> | <img src="screenshots/09_admin_command_center.png" alt="Super Admin Telemetry" width="300" /> | <img src="screenshots/03_cart_checkout.png" alt="Customizable Cart" width="300" /> |
 
 ---
 
