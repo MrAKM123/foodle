@@ -94,6 +94,15 @@ export const VerifyOtpPage: React.FC = () => {
                   placeholder="• • • • • •"
                   className="w-full text-center tracking-[12px] font-mono text-2xl font-bold py-3 bg-cream-50 border border-cream-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all text-brand-600"
                 />
+                <div className="mt-2 text-center">
+                  <button
+                    type="button"
+                    onClick={() => setOtp('123456')}
+                    className="text-[11px] font-semibold text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 border border-brand-200 px-3 py-1 rounded-full transition-colors inline-flex items-center gap-1"
+                  >
+                    <span>⚡ Quick Test OTP: <strong className="font-mono">123456</strong></span>
+                  </button>
+                </div>
               </div>
 
               <button

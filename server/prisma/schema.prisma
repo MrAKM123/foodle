@@ -254,6 +254,7 @@ model Order {
   razorpaySignature    String?
 
   // Delivery OTP Security
+  deliveryOtp          String?              // Plaintext 4-digit code shown to customer
   deliveryOtpHash      String?              // Server-side hashed 4-digit code
   otpAttempts          Int                  @default(0)
   otpExpiresAt         DateTime?

@@ -208,6 +208,7 @@ export class OrderService {
           couponCode: appliedCouponCode,
           paymentMethod: data.paymentMethod,
           paymentStatus: data.paymentMethod === 'COD' ? 'PENDING' : 'PENDING',
+          deliveryOtp: rawDeliveryOtp,
           deliveryOtpHash,
           otpAttempts: 0,
           otpExpiresAt,

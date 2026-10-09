@@ -232,6 +232,7 @@ model Order {
   razorpayPaymentId    String?
   razorpaySignature    String?
 
+  deliveryOtp          String?
   deliveryOtpHash      String?
   otpAttempts          Int                  @default(0)
   otpExpiresAt         DateTime?
